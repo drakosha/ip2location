@@ -10,7 +10,7 @@ const result = {};
 const token = process.env['IP2L_TOKEN'];
 const ip2lurl = process.env['IP2L_URL'];
 const url = token
-  ? `'https://www.ip2location.com/download/?token=${token}&file=DB1LITE'`
+  ? `https://www.ip2location.com/download/?token=${token}&file=DB1LITE`
   : ip2lurl;
 const outFile = process.env['IP2L_OUT'] || 'ip2l.zip';
 
