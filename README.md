@@ -9,3 +9,5 @@ This script using DB1.LITE database. You can override download url by set `IP2L_
 
 It will generate `ip2l.zip` file in MaxMind format. Output filename can be overridden by setting `IP2L_OUT` variable.
 To use this file with OPNsense you should publish it on any webserver and fill the link in Firewall -> Aliases -> GeoIP settings of OPNsense.
+
+For testing and experimental purpose you can use this [link](https://lab.triptrack.net/ip2l.zip)
