@@ -1,6 +1,6 @@
 {
   "name": "ip2location",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "IP2Location country database to MaxMind format convertion for OPNsense",
   "main": "index.js",
   "scripts": {

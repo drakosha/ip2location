@@ -26,17 +26,35 @@ function processDataRow(data) {
 
 function rangeToNets(from, to) {
   const ranges = [];
-  let length = to - from + 1;
+  to += 1;
+
+  const bits = Math.trunc(Math.log2(to - from));
+  const shift = Math.pow(2, bits);
+
+  let toUp = from - from % (1 << bits);
+
+  if (toUp !== from) {
+    toUp += (1 << bits);
+    toDown = toUp;
+
+    do {
+      const bits = Math.trunc(Math.log2(toDown - from));
+      const shift = Math.pow(2, bits);
+      
+      toDown -= shift;
+
+      ranges.unshift(`${ip.fromLong(toDown)}/${32-bits}`);
+    } while (toDown > from);
+  }
+
   do {
-    const bits = Math.trunc(Math.log2(length));
+    const bits = Math.trunc(Math.log2(to - toUp));
     const shift = Math.pow(2, bits);
     
-    ranges.push(`${ip.fromLong(from)}/${32-bits}`);
+    ranges.push(`${ip.fromLong(toUp)}/${32-bits}`);
 
-    length -= shift;
-    from += shift;
-
-  } while (length > 0);
+    toUp += shift;
+  } while (toUp < to);
 
   return ranges;
 }
@@ -55,7 +73,7 @@ async function writeResults() {
   });
 
   const out = new Zip();
-  
+
   out.file('ip2l-locations-en.csv', locations);
   out.file('ip2l-IPv4.csv', ipv4);
   fs.writeFileSync(outFile, await out.generateAsync({ 
