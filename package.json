@@ -1,0 +1,17 @@
+{
+  "name": "ip2location",
+  "version": "1.0.0",
+  "description": "IP2Location country database to MaxMind format convertion for OPNsense",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mikhail Kostryukov",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "csv-parser": "^3.0.0",
+    "ip": "^1.1.8",
+    "jszip": "^3.10.1"
+  }
+}
