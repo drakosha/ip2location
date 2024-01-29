@@ -29,8 +29,6 @@ function rangeToNets(from, to) {
   to += 1;
 
   const bits = Math.trunc(Math.log2(to - from));
-  const shift = Math.pow(2, bits);
-
   let toUp = from - from % (1 << bits);
 
   if (toUp !== from) {
