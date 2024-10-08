@@ -1,0 +1,10 @@
+services:
+  ip2location:
+    build:
+      dockerfile:  Dockerfile
+    image: ip2location
+    volumes:
+      - /data:/data
+    environment:
+      IP2L_TOKEN: 
+      IP2L_OUT: '/data/ip2l.zip'
